@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>分支结构作业</title>
+</head>
+
+<body>
+  <script>
+    // 判断一个年份是闰年还是平年
+      // 提示:闰年：能被4整除，但不能被100整除的年份 或者 能被400整除的年份
+  var yers = 2017;
+    if(yers%4 || yers%100==0 )// if语句隐式布尔转换 如果可以被4整除则为0则为false    同时不能被100整除时即false时 则为闰年执行else
+      console.log('平年');
+    }else{
+      console.log('润年');   //或语句同时为假则为闰年
+    }
+  </script>
+</body>
+
+</html>
