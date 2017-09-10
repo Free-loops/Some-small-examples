@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //阶乘
+//    function numSum(n) {
+//        var j=1;
+//        var sum=0;
+//        for (var i = 1; i <= n; i++) {
+//            j *= i;
+//            sum += j;
+//        }
+//        console.log(n+"的阶乘为"+j);
+//        console.log(1+"到"+n+"的阶乘的和为"+sum);
+//    }
+//    numSum(3);
+//    求一组数中的最大值
+    function num(a1,b1,c1,d1,f1,g1){
+    var num=[a1,b1,c1,d1,f1,g1];
+        for(var j=0;j<num.length-1;j++){
+            for(var i=0;i<num.length-1-j;i++){
+                if(num[i]>num[i+1]){
+                    var p=num[i+1];
+                    num[i+1]=num[i];
+                    num[i]=p;
+                }
+            }
+        }
+        console.log('最大值为'+num[num.length-1]);
+        console.log('最小值为'+num[0]);
+    }
+
+    num(1,3,2,9,5,10);
+//    求一组数中的最小值
+</script>
+</body>
+</html>

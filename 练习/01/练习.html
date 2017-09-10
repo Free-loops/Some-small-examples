@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //1.输出一组数组的最大值和最小值 和位置
+//    var numbers = [65, 13, 101, 88, 10, 25];
+//    var maxnumbers=numbers[0];
+//    var minnumbers=numbers[0];
+//    var maxindex=0;
+//    var minindex=0;
+//    for(var i=1;i<numbers.length;i++){
+//        if(maxnumbers<numbers[i]){
+//            maxnumbers=numbers[i];
+//            maxindex=i;
+//        }
+//        if(minnumbers>numbers[i]){
+//            minnumbers=numbers[i];
+//            minindex=i;
+//        }
+//    }
+//    console.log(maxnumbers+'和'+maxindex);
+//    console.log(minnumbers+'和'+minindex);
+    //2.添加|(没整明白)
+    //3.删除为0的元素
+//    var numbers = [65, 13, 0, 101, 88, 10, 25, 0];
+//    var nnumbers=[];
+//    for(var i=0;i<numbers.length;i++){
+//        if(numbers[i]!=0) {
+//            nnumbers[nnumbers.length] = numbers[i];
+//        }
+//    }
+//    console.log(nnumbers);
+    //4.翻转数组
+//    var arr=[1,2,3,4];
+//    var newArr=[];
+//    for(var i=arr.length-1;i>=0;i--){
+//        newArr[newArr.length]=arr[i];
+//    }
+//    console.log(newArr);
+//    var arr=[1,2,3,4];
+//    var newArr=[];
+//    for(arr i=0;i<arr.length;i++){
+//        newArr
+//    }
+    //5.冒泡排序
+    var arr=[1,45,23,16,12,9,4,5];
+    var l=0;
+    var p;
+    for(var i=0;i<arr.length-1;i++){
+        l=0;
+        for(var j=0;j<arr.length-1-i;j++){
+            if(arr[l]>arr[l+1]){
+                p=arr[l];
+                arr[l]=arr[l+1];
+                arr[l+1]=p;
+            }
+        }
+
+    }
+    console.log(arr);
+</script>
+</body>
+</html>
