@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //判断arr是否是一个数组
+    var arr = new Array(1,2,2,5); //Math() Date()
+//    var result = Array.isArray(arr);
+//    console.log(result);
+    // 数组的push方法 在数组的末尾添加元素  返回数组的length
+//    var result = arr.push(3,4);
+//    console.log(result);
+//    console.log(arr);
+    //数组中相同元素出现的次数
+    var obj = {};
+    for(i=0;i<arr.length;i++){
+        if(obj[arr[i]]){
+            obj[arr[i]]++;
+        }else{
+            obj[arr[i]]=1;
+        }
+    }
+    console.log(obj);
+    //去掉数组中重复的元素
+    var newarr = [];
+    for(key in obj ){
+        //newarr[newarr.length]=key;或者
+        newarr.push(key);//在数组末尾添加元素
+    }
+    console.log(newarr);
+</script>
+</body>
+</html>
