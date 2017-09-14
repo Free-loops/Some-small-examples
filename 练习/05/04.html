@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //获取数组中的最大值
+    var arr = [1,9,3,7,5];
+    function maxArr(arr){
+        var maxNum=arr[0];
+        for(var i=0;i<arr.length;i++){
+            if(arr[i]>maxNum){
+                maxNum=arr[i];
+            }
+        }
+        return maxNum;
+    }
+    console.log(maxArr(arr));
+</script>
+</body>
+</html>

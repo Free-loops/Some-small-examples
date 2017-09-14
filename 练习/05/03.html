@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //九九乘法表
+    var cfb='';
+    for(var i=1;i<=9;i++){
+        for(var j=i;j<=9;j++){
+          cfb+=(i+'*'+j+'='+i*j+'; ');
+        }
+        cfb+="\n";
+    }
+    console.log(cfb);
+    //九九乘法表
+    for(var i = 1;i<=9;i++){
+        for(var j = 1;j<=i;j++){
+            document.write(j+"*"+i+"="+j*i+" ")
+        }
+        document.write("<br />")
+    }
+</script>
+</body>
+</html>

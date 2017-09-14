@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //冒泡排序
+    function arr(){
+        for(i=0;i<arguments.length-1;i++){
+            for(j=0;j<arguments.length-i-1;j++){
+                if(arguments[j]<arguments[j+1]){
+                    temp=arguments[j+1];
+                    arguments[j+1]=arguments[j];
+                    arguments[j]=temp;
+                }
+            }
+        }
+        return arguments;
+    }
+    console.log(arr(4,2,3));
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //法1
+//    var str = 'get-element-by-id';
+//    var atr = str.split("");
+//    console.log(atr)
+//    for(var i=0;i<atr.length;i++){
+//        if(atr[i]=='-'){
+//        atr[i]='';
+//        atr[i+1] =atr[i+1].toUpperCase();
+//        }
+//    }
+//    str = atr.join('');
+//    console.log(str);
+
+    //法2
+//    var str = 'get-element-by-id';
+//    var arr = str.split("-");
+//    for(var i = 1;i<arr.length;i++){
+//        arr[i]=arr[i].charAt(0).toUpperCase()+arr[i].substring(1);
+//    }
+//    str= arr.join('');
+//    console.log(str);
+    //法3
+//    var str = 'get-element-by-id';
+//    for(var i=0;i<str.length;i++) {
+//        if(str.charAt(i)=="-"){
+//            k1=str.charAt(i)+str.charAt(i+1);
+//            k2=str.charAt(i+1).toUpperCase();
+//            str = str.replace(new RegExp(k1, 'g'),k2);
+//        }
+//    }
+//    console.log(str);
+</script>
+</body>
+</html>
