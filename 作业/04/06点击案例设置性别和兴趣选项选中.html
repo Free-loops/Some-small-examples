@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="我是男生" />
+		<input type="button" value="我是女生" /><br />
+		性别：<input type="radio" value="" name="sex"/>男
+		<input type="radio" value="" name="sex"/>女<br />
+		<input type="checkbox" value="" /><span>抽烟</span>
+		<input type="checkbox" value="" /><span>喝酒</span>
+		<input type="checkbox" value="" /><span>烫头</span>
+		<input type="checkbox" value="" /><span>化妆</span>
+	</body>
+	<script type="text/javascript">
+		var aInput = document.getElementsByTagName('input');
+		var aSpan = document.getElementsByTagName('span');
+		aHubby = [];
+		for(var i=4;i<aInput.length;i++){
+				aHubby[aHubby.length]=aInput[i];
+		}
+		aInput[0].onclick = function(){
+			aInput[2].checked=true;
+			for (var i = 0; i < aHubby.length; i++) {
+						aHubby[i].checked=false;
+					}
+			for(var i=0;i<aHubby.length;i++){
+				if(i!=3){
+					aHubby[i].checked=true;
+				}
+			}
+		}
+		aInput[1].onclick = function(){
+			aInput[3].checked=true;
+			for (var i = 0; i < aHubby.length; i++) {
+						aHubby[i].checked=false;
+					}
+			for(var i=0;i<aHubby.length;i++){
+				if(i==3){
+					aHubby[i].checked=true;
+				}
+			}
+		}
+	</script>
+</html>

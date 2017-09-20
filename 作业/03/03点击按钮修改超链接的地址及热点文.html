@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" name="" id="" value="切换" />
+		<a href="https://www.baidu.com/">百度</a>
+	</body>
+	<script type="text/javascript">
+		var aInput = document.getElementsByTagName('input');
+		var aA = document.getElementsByTagName('a');
+		var noOff=true;
+		aInput[0].onclick = function(){
+			if(noOff){
+				aA[0].href='http//：www.sina.com';
+				aA[0].innerText='新浪';
+			}else{
+				aA[0].href='http//：www.baidu.com';
+				aA[0].innerText='百度';
+			}
+			noOff=!noOff;
+		}
+	</script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width: 128px;
+            height: 80px;
+            background: url("1.jpg") no-repeat ;
+            position: absolute;
+            opacity: 0;/*盒子透明度*/
+            transition: 0.5s;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+<script>
+    str = "";
+    for(var i=0;i<100;i++){
+        var l=i%10*128;
+        var t=parseInt(i/10)*80;
+      str+='<div class="box" style="left:'+l+'px;top:'+t+'px;background-position:'+-l+'px '//注意此处空格
+              +-t+'px"></div>';
+
+    }
+    document.body.innerHTML = str;
+    var aDiv = document.getElementsByTagName('div');
+    for(var i=0;i<aDiv.length;i++){
+        aDiv[i].onmouseover = function (){
+            this.style.opacity = 1;0
+        }
+    }
+</script>
+</html>

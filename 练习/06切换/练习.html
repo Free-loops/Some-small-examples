@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			input {
+				width: 100px;
+				height: 50px;
+				margin-left: 30px;
+				background-color: #E3171B;
+				font-weight: 600;
+				color: #fff;
+				font-size: 16px;
+				outline: none;
+				/*border: 1px solid #fff;*/
+				border-radius: 25px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="绿色" /><br />
+		<img src="img/jd1.png"/>
+		
+	</body>
+	<script type="text/javascript">
+		var aBtn = document.getElementsByTagName('input');
+		var aImg = document.getElementsByTagName('img');
+		aBtn[0].onclick=function(){
+			if(aBtn[0].value=="绿色"){
+				aBtn[0].value="红色";
+				aImg[0].src="img/jd2.png";
+				aBtn[0].style.backgroundColor='#099F42';
+			}else{
+				aBtn[0].value="绿色";
+				aImg[0].src="img/jd1.png";
+				aBtn[0].style.backgroundColor='#E3171B';
+			}
+		}
+	</script>
+</html>

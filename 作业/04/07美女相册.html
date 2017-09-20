@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body {
+				margin: 0;
+				padding: 0;
+				background-color: #ccc;
+				color: #333;
+				text-align: center;
+				
+			}
+			h1,span {
+				/*font-size: 12px;*/
+				font-family: "楷体_GB2312","\534E\6587\7EC6\9ED1";
+			}
+			img {
+				width: 100px;
+			}
+			div img {
+				width: 500px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>美女画廊</h1>
+		<img src="./images/1.jpg" alt="美女1" />
+		<img src="./images/2.jpg" alt="美女2" />
+		<img src="./images/3.jpg" alt="美女3" />
+		<img src="./images/4.jpg" alt="美女4" />
+		<div></div>
+		<div><img src="images/placeholder.png" alt="" id='divImg'/></div>
+		<span>请选择一个图片</span>
+	</body>
+	<script type="text/javascript">
+		var aImg = document.getElementsByTagName('img');
+		var aDiv = document.getElementsByTagName('div');
+		var oImg = document.getElementById('divImg');
+		for (var i = 0;i<aImg.length;i++) {
+			aImg[i].onclick = function(){
+				oImg.src = this.src;
+				aDiv[0].innerText = this.alt;
+			}
+		}
+	</script>
+</html>

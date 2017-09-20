@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.lei{
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>216654</li>
+			<li>16546</li>
+			<li>1654984</li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		var aLi = document.getElementsByTagName('li');
+		for (var i=0;i<aLi.length;i++) {
+			aLi[i].onclick = function(){
+				this.className = "lei";
+			}
+		}
+	</script>
+</html>

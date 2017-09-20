@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		城市：<select name="">
+			<option >北京</option>
+			<option >上海</option>
+			<option >广州</option>
+		</select>
+		<input type="button" value="快速选择"/>
+	</body>
+	<script type="text/javascript">
+		var aSelect = document.getElementsByTagName('select')[0];
+		var aOption = aSelect.getElementsByTagName('option');
+		var aInput = document.getElementsByTagName('input')[0];
+		var i=0;
+		aInput.onclick=function(){
+			aOption[i].selected='selected';
+			i++
+			if(i==aOption.length){
+				i=0;
+			}
+		};
+	</script>
+</html>

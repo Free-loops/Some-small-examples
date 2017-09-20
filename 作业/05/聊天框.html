@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 300px;
+            height: 500px;
+            border: 1px solid red;
+            overflow: auto;
+            padding: 10px;
+            border-radius:10px;
+        }
+        li {
+            list-style: none;
+
+        }
+        .lei{
+            background-color: #9bceea;
+            border-radius: 10px;
+            display: inline-block;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<span>小明</span><input type="text"/><input type="button" value="发送"/>
+</body>
+<script>
+    var aDiv = document.getElementsByTagName('div');
+    var aInput = document.getElementsByTagName('input');
+    var aSpan = document.getElementsByTagName('span');
+    aInput[0].focus();
+    aInput[1].onclick = function(){
+        if(aSpan[0].innerText=='小花'&&aInput[0].value!="") {
+            aDiv[0].innerHTML+='<li style=text-align:left;>'+aSpan[0].innerText+'<br >'+'<p class="lei">'+aInput[0].value+'</p>'+'</li>';
+
+        }else if(aInput[0].value!=""){
+            aDiv[0].innerHTML+='<li style=text-align:right;>'+aSpan[0].innerText+'<br >'+'<p class="lei">'+aInput[0].value+'</p>'+'</li>';
+        }
+        aInput[0].value = "";
+        aInput[0].focus();
+    }
+    aSpan[0].onclick = function (){
+        if(aSpan[0].innerText=='小花'){
+            this.innerText='小明';
+        }else{
+            this.innerText='小花';
+        }
+    }
+</script>
+</html>

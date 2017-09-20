@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" name="" id="" value="按钮" /><br />
+		<img src="img/jd1.png" alt="" title="图片1"/>
+		<img src="img/jd2.png" alt="" title="图片2"/>
+	</body>
+	<script type="text/javascript">
+		var aInput = document.getElementsByTagName('input');
+		var aImg = document.getElementsByTagName('img');
+		aInput[0].onclick = function(){
+			for(var i=0;i<aImg.length;i++){
+				aImg[i].title = "图片"+"a"+(i+1);
+			}
+		}
+	</script>
+</html>

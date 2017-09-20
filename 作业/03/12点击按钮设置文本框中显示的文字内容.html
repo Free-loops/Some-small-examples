@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<textarea name="" rows="" cols="" placeholder="请输入留言">周末去你家找你玩</textarea>
+		<input type="button" value="清空留言"/>
+	</body>
+	<script type="text/javascript">
+		var aTextarea = document.getElementsByTagName('textarea')[0];
+		var aInupt = document.getElementsByTagName('input')[0];
+		aInupt.onclick=function(){
+			aTextarea.value="";
+		}
+	</script>
+</html>

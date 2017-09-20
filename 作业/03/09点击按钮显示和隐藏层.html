@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 200px;
+				height: 200px;
+				background-color: red;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="" id="" value="隐藏" />
+		<div></div>
+	</body>
+	<script type="text/javascript">
+		var aInput = document.getElementsByTagName('input')[0];
+		var aDiv = document.getElementsByTagName('div')[0];
+		var offOn = true;
+		aInput.onclick = function(){
+			if(offOn){
+				aDiv.style.display="none";
+				aInput.value='显示';
+			}else{
+				aDiv.style.display="block";
+				aInput.value='隐藏';
+			}
+		 	offOn=!offOn;
+		 	
+		}
+	</script>
+</html>

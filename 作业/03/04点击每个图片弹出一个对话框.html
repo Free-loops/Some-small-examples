@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<img src="img/jd1.png" alt="" /><img src="img/jd2.png" alt="" />
+	</body>
+	<script type="text/javascript">
+		var aImg = document.getElementsByTagName('img');
+		
+		for(var i=0;i<aImg.length;i++){
+			aImg[i].onclick = function(){
+			alert('对话框');
+			}
+		}
+	</script>
+</html>

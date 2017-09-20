@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<img src="./img/jd1.png" alt="" title="1" />
+		<img src="./img/jd2.png" alt="" title="1" />
+		
+	</body>
+	<script type="text/javascript">
+		var aImg = document.getElementsByTagName('img');
+		for (var i = 0; i < aImg.length; i++) {
+			aImg[i].onclick = function (){
+				for (var i = 0; i < aImg.length; i++) {
+					aImg[i].style.height='';
+					aImg[i].title = '2'
+				}
+				this.style.height='300px';
+				alert("对话框")
+			}
+		}
+	</script>
+</html>

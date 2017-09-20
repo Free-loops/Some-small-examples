@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        dt {
+            padding-left: 20px;
+            background:url(img/ico1.gif) 0 7px no-repeat;
+        }
+        dd {
+            padding-left: 30px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <dl>
+        <dt>我的好友</dt>
+        <dd>张三</dd>
+        <dd>张三</dd>
+    </dl>
+    <dl>
+        <dt>企业好友</dt>
+        <dd>张三</dd>
+        <dd>张三</dd>
+    </dl>
+    <dl>
+        <dt>黑名单</dt>
+        <dd>张三</dd>
+        <dd>张三</dd>
+    </dl>
+</body>
+<script>
+    var aDl = document.getElementsByTagName('dl');
+    var aDt = document.getElementsByTagName('dt');
+    var aDd = document.getElementsByTagName('dd');
+    //循环所有的dt
+    for(var i=0;i<aDt.length;i++){
+        //获得this的索引
+        aDt[i].index=i;
+        //给所有的dt添加点击事件
+        aDt[i].onclick = function(){
+            //获得当前被点击的dt下的所有dd
+            var arrDd = aDl[this.index].getElementsByTagName('dd');
+            //判断如果被点击的dt下dd是隐藏的
+            if(arrDd[0].style.display=="none"){//如果隐藏//可能其他显示 首先暴力清除 然后让当前显示
+                //暴力还原
+                for(var i=0;i<aDt.length;i++){
+                    aDt[i].style.background = "url(img/ico1.gif) 0 7px no-repeat";
+                }
+                //暴力还原
+                for(var i=0;i<aDd.length;i++){
+                    aDd[i].style.display="none";
+                }
+                //箭头朝下
+                this.style.background = "url(img/ico2.gif) 0 7px no-repeat";
+                //让所有dd显示
+                for(i=0;i<arrDd.length;i++){
+                    arrDd[i].style.display="block";
+                }
+            }else{//如果显示 //其他肯定隐藏  让当前也隐藏即可
+                //箭头还原
+                this.style.background = "url(img/ico1.gif) 0 7px no-repeat";
+                //让所有dd隐藏
+                for(i=0;i<arrDd.length;i++){
+                    arrDd[i].style.display="none";
+                }
+            }
+        }
+    }
+</script>
+</html>
