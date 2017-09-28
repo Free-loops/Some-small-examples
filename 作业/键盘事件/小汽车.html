@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #fly {
+            width: 150px;
+            height: 120px;
+            background:url(qc.gif);
+            background-size: 150px;
+            position: absolute;
+            left: 300px;
+            top: 300px;
+        }
+    </style>
+</head>
+<body>
+<div id="fly"></div>
+</body>
+<script type="text/javascript">
+    var oFly = document.getElementById("fly");
+    var onOff = {
+        left : false,
+        up : false,
+        right : false,
+        down : false
+    }
+    var speed = 10;
+    setInterval(function(){
+        if(onOff.left) {
+            oFly.style.left = oFly.offsetLeft - speed + "px";
+            oFly.style.transform = "rotateY(180deg)";
+        }
+        if(onOff.right) {
+            oFly.style.left = oFly.offsetLeft + speed + "px";
+            oFly.style.transform = "rotate(0deg)";
+        }
+        if(onOff.up) {
+            oFly.style.top = oFly.offsetTop - speed + "px";
+            oFly.style.transform = "rotate(0deg)";
+        }
+        if(onOff.down) {
+            oFly.style.top = oFly.offsetTop + speed + "px";
+            oFly.style.transform = "rotate(0deg)";
+        }
+        // 方向判断
+        if (onOff.left&&onOff.up) {
+            oFly.style.transform = "rotateX(-0deg) rotateY(-180deg) rotateZ(-45deg)";
+        }else if(onOff.left&&onOff.down) {
+            oFly.style.transform = "rotateX(-0deg) rotateY(-180deg) rotateZ(45deg)";
+        }else if(onOff.right&&onOff.up) {
+            oFly.style.transform = "rotate(-45deg)";
+        }else if(onOff.right&&onOff.down) {
+            oFly.style.transform = "rotate(45deg)";
+        }
+        // 限制范围
+        limit();
+    },20);
+    document.onkeydown = function (e) {
+        e = e || event;
+        if(e.keyCode == 37) {
+            onOff.left = true;
+        } else if(e.keyCode==39) {
+            onOff.right = true;
+        }
+        if(e.keyCode == 38) {
+            onOff.up = true;
+        } else if(e.keyCode==40) {
+            onOff.down = true;
+        }
+    }
+    document.onkeyup = function (e) {
+        e = e || event;
+        switch(e.keyCode) {
+            case 37:
+                onOff.left = false;
+                break;
+            case 39:
+                onOff.right = false;
+                break;
+            case 38:
+                onOff.up = false;
+                break;
+            case 40:
+                onOff.down = false;
+                break;
+        }
+    }
+    function limit() {
+        if(oFly.offsetLeft<=0) {
+            oFly.style.left = 0;
+        }
+        if(oFly.offsetLeft >= pos().l- oFly.offsetWidth) {
+            oFly.style.left = pos().l- oFly.offsetWidth + "px";
+        }
+        if(oFly.offsetTop<=0) {
+            oFly.style.top = 0;
+        }
+        if(oFly.offsetTop >= pos().t - oFly.offsetHeight) {
+            oFly.style.top = pos().t - oFly.offsetHeight+ "px";
+        }
+    }
+    function pos() {
+        return {
+            l:document.documentElement.clientWidth,
+            t:document.documentElement.clientHeight
+        };
+    }
+</script>
+</html>

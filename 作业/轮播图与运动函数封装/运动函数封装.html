@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+        }
+    </style>
+</head>
+<input type="button"value="向右走"/>
+<input type="button"value="向左走"/>
+<input type="button"value="向下走"/>
+<input type="button"value="向上走"/>
+<input type="button"value="走一圈"/>
+<input type="button"value="停"/>
+<div id="box"></div>
+<body>
+<script>
+    var aInput = document.getElementsByTagName('input');
+    var oDiv = document.getElementById('box');
+
+    //向右走
+    aInput[0].onclick = function(){
+        move(oDiv,'left',98,800)
+    }
+    //向左走
+    aInput[1].onclick = function(){
+        move(oDiv,'left',98,100)
+    }
+    //向下走
+    aInput[2].onclick = function(){
+        move(oDiv,'top',98,400)
+    }
+    //向上走
+    aInput[3].onclick = function(){
+        move(oDiv,'top',7,100)
+    }
+    //走一圈
+    aInput[4].onclick = function(){
+        move(oDiv,'left',98,800,function(){
+            move(oDiv,'top',98,400,function(){
+                move(oDiv,'left',98,100,function(){
+                    move(oDiv,'top',98,100)
+                })
+            })
+        })
+    }
+    //停止运动
+    aInput[5].onclick = function(){
+        clearInterval(oDiv.timer);
+        oDiv.timer = null;
+    }
+    function move(obj,attr,speed,target,fn){
+        clearInterval(obj.timer);//在每次开定时器之前先清除上一次的定时器
+        obj.timer = null;//将timer作为obj的一个属性 挂载到obj上（避免函数内部声明的变量不能被外部识别）
+        var dis =  parseFloat(getStyle(obj,attr));//获取obj要改变的属性 并且去掉单位
+        //对比起止位置数据大小 如果开始位置数据大于结束位置大小 speed改为负数否则为正
+        speed =  dis > target ? -speed : speed;
+        obj.timer = setInterval(function(){//添加定时器
+            dis+=speed;//每执行一次dis加一个speed
+            if(dis>=target&&speed>0||dis<=target&&speed<0) {
+                //判断dis的大小是否超过目标点位置的数据大小  如果超过了就等于该值
+                dis = target
+
+            }
+            obj.style[attr] = dis+'px';
+            //将改变之后的dis属性值赋值给 obj的属性
+            if(dis==target){//判断  如果达到了目标点 就清除定时器
+                clearInterval(obj.timer);
+                obj.timer = null;
+                fn&&fn();
+            }
+
+        },30)
+    }
+    //获得元素样式属性的兼容性函数
+    function getStyle(obj,attr) {
+        if(obj.currentStyle){
+            return obj.currentStyle[attr];
+        }else {
+            return getComputedStyle(obj)[attr];
+        }
+    }
+</script>
+</body>
+</html>

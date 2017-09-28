@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 0;
+        }
+        .all {
+            width: 500px;
+            height: 200px;
+            padding: 7px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+        }
+        .screen {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        .screen li {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            float: left;
+        }
+        .screen ul {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 3000px;
+        }
+        .all ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+        }
+        .all ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .screen ol .current {
+            background: yellow;
+        }
+        #arr {
+            display: none;
+        }
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+    </style>
+</head>
+<body>
+<!--外盒子-->
+<div class="all" id='all'>
+    <!--内盒子-->
+    <div class="screen" id="screen">
+        <ul id="ul">
+            <li><img src="images/1.jpg" width="500" height="200"/></li>
+            <li><img src="images/2.jpg" width="500" height="200"/></li>
+            <li><img src="images/3.jpg" width="500" height="200"/></li>
+            <li><img src="images/4.jpg" width="500" height="200"/></li>
+            <li><img src="images/5.jpg" width="500" height="200"/></li>
+        </ul>
+        <!--小方块-->
+        <ol>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ol>
+        <!--左右小三角-->
+        <div id="arr">
+            <span id="left"><</span>
+            <span id="right">></span>
+        </div>
+    </div>
+</div>
+</body>
+<script src="myTools.js"></script>
+<script>
+        var oUl = $("#ul");
+        var aLi = $("li",oUl);
+        var oNav = $("ol",$("#screen"))[0];
+        var navLi = $("li",oNav);
+        var oArr = $("#arr");
+        var oLeft = $("#left");
+        var oRight = $("#right");
+        //复制一份第一个li  放入ul的最后面
+        oUl.appendChild(aLi[0].cloneNode(true));
+        //给第一个小li添加初始颜色 为黄色
+        navLi[0].className = 'current';
+        var k=0;
+        //添加自动滚动效果
+        var timer;
+        autoPlay()
+        //当鼠标移到大的 box上面  让arr显示出来 清除定时器, 当鼠标移开大的box 让arr隐藏 开启自动滚动
+        $("#screen").onmouseover = function() {
+            oArr.style.display = "block";
+            clearInterval(timer);
+            timer = null;
+        }
+        $("#screen").onmouseout = function() {
+            oArr.style.display = "none";
+            autoPlay();
+        }
+        //给五个小li添加鼠标移上事件
+        for(var i=0;i<navLi.length;i++){
+            navLi[i].index = i;
+            navLi[i].onmouseover=function(){
+                for(var i=0;i<navLi.length;i++){
+                    navLi[i].className = '';
+                }
+                this.className = 'current';
+                k=this.index
+                move(oUl,'left',100,-500*k);
+            }
+        }
+        //给两个左右按钮添加点击事件
+        oRight.onclick = function(){
+            k++
+            if(oUl.offsetLeft ==-2500 ){
+                oUl.style.left = 0;
+            }
+            move(oUl,'left',100,-500*k);
+            for(var i=0;i<navLi.length;i++){
+                navLi[i].className = '';
+            }
+            if(k==5){
+                k=0
+            }
+            navLi[k].className = 'current';
+        }
+        oLeft.onclick = function(){
+            k--
+            if(k<0){
+                k=4
+            }
+            if(oUl.offsetLeft ==0 ){
+                oUl.style.left = -2500+'px';
+            }
+            move(oUl,'left',100,-500*k);
+            for(var i=0;i<navLi.length;i++){
+                navLi[i].className = '';
+            }
+            navLi[k].className = 'current';
+        }
+        //自动滚动函数
+        function autoPlay(){
+            timer = setInterval(function(){
+                k++
+                if(oUl.offsetLeft ==-2500 ){
+                    oUl.style.left = 0;
+                }
+                move(oUl,'left',100,-500*k);
+                for(var i=0;i<navLi.length;i++){
+                    navLi[i].className = '';
+                }
+                if(k==5){
+                    k=0
+                }
+                navLi[k].className = 'current';
+
+            },3000)
+        }
+</script>
+</html>

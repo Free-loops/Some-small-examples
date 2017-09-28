@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 600px;
+            height: 500px;
+            border: 1px solid red;
+            position: relative;
+        }
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="开始"/>
+<input type="button" value="停"/>
+<div>
+    <img src="./img/00.jpg"alt=""/>
+</div>
+</body>
+<script>
+    var aInput = document.getElementsByTagName('input');
+    var oDiv = document.getElementsByTagName('div')[0];
+    var oImg = document.getElementsByTagName('img')[0];
+    var timer = [];
+    k=0;
+    aInput[0].onclick = function(){
+        //思路1 单机一次就会出现一个定时器  需要赋予不同的名称 这样就可以找到所有定时器进行清除
+        //思路2 也可以在每次单机后先清除之前定义的定时器 然后再定义下一个定时器
+        timer[k] = setInterval(function(){
+            var num1 = Math.round(Math.random()*(oDiv.offsetWidth-oImg.offsetWidth));
+            var num2 = Math.round(Math.random()*(oDiv.offsetHeight-oImg.offsetHeight));
+            oImg.style.left = num1+'px';
+            oImg.style.top = num2+'px';
+        },100)
+        k++
+    }
+    aInput[1].onclick = function(){
+        for(var i=0;i<timer.length;i++){
+            clearInterval(timer[i]);
+            timer[i] = null;
+        }
+    }
+</script>
+</html>

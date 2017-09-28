@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .box {
+            width: 400px;
+            height: 300px;
+            margin: 100px auto;
+            position: relative;
+            border: 1px solid #ccc;
+        }
+        a {
+            display: none;
+            width: 400px;
+            height: 300px;
+            cursor: move;
+            text-align: center;
+            font: 700 80px/300px "simsun";
+        }
+        .show {
+            display: block;
+        }
+        ul {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            margin-left: -66px;
+        }
+        li {
+            float: left;
+            width: 18px;
+            height: 18px;
+            text-align: center;
+            color: #fff;
+            line-height: 18px;
+            cursor: pointer;
+            margin: 2px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.7);
+        }
+        .current {
+            background-color: red;
+        }
+        span {
+            position: absolute;
+            top: 50%;
+            text-align: center;
+            font: 700 30px/60px "simsun";
+            color: #fff;
+            margin-top: -30px;
+            width: 30px;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        span:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .right {
+            right: 0;
+        }
+    </style>
+
+</head>
+<body>
+<div class="box">
+    <a href="#" class="show">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
+    <a href="#">6</a>
+    <ul>
+        <li class="current">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+    <span class="left">&lt;</span>
+    <span class="right">&gt;</span>
+</div>
+</body>
+<script>
+    var aA = document.getElementsByTagName('a');
+    var aLi = document.getElementsByTagName('li');
+    var aSpan = document.getElementsByTagName('span');
+    //点击下面六个按钮控制图片
+    for(var i=0;i<aLi.length;i++) {
+        aLi[i].index = i;
+        aLi[i].onclick = function () {
+            for(var i=0;i<aA.length;i++){
+                aA[i].style.display = 'none';
+                aLi[i].style.background = 'rgba(0,0,0,0.7)';
+            }
+            aA[this.index].style.display = 'block';
+            this.style.backgroundColor = 'red';
+        }
+    }
+    var k = 0;
+    //点击右边按钮控制图片
+    aSpan[1].onclick = function(){
+        if(k==5){
+            k=-1;
+        }
+        for(var i=0;i<aA.length;i++){
+            aA[i].style.display = 'none';
+            aLi[i].style.background = 'rgba(0,0,0,0.7)';
+        }
+        k++
+        aA[k].style.display = 'block';
+        aLi[k].style.background = 'red';
+    }
+    //点击左边按钮控制图片
+    aSpan[0].onclick = function(){
+        if(k==0){
+            k=6;
+        }
+        for(var i=0;i<aA.length;i++){
+            aA[i].style.display = 'none';
+            aLi[i].style.background = 'rgba(0,0,0,0.7)';
+        }
+        k--
+        aA[k].style.display = 'block';
+        aLi[k].style.background = 'red';
+    }
+    //图片自动轮播
+    timer = setInterval(function(){
+        if(k==5){
+            k=-1;
+        }
+        for(var i=0;i<aA.length;i++){
+            aA[i].style.display = 'none';
+            aLi[i].style.background = 'rgba(0,0,0,0.7)';
+        }
+        k++
+        aA[k].style.display = 'block';
+        aLi[k].style.background = 'red';
+    },3000)
+</script>
+</html>

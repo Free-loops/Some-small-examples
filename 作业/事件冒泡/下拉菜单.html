@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #box {
+            width: 100px;
+            margin: 10px auto 0;
+            border: 1px solid black;
+        }
+        ul,h3 {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        ul li {
+            list-style: none;
+            height: 30px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box">
+    <h3>标题</h3>
+    <ul>
+        <li>新闻</li>
+        <li>娱乐</li>
+        <li>体育</li>
+        <li>头条</li>
+    </ul>
+</div>
+
+</body>
+<script type="text/javascript">
+    var oBox = document.getElementById('box');
+    var aH3 = document.getElementsByTagName('h3')[0];
+    var onOff = true;
+    aH3.onclick = function(e) {
+        e = e || event;
+        e.cancelBubble = true;
+        if(onOff) {
+            this.nextElementSibling.style.display = "none";
+        } else {
+            this.nextElementSibling.style.display = "block";
+        }
+        onOff = !onOff;
+    }
+    document.onclick = function() {
+
+        aH3.nextElementSibling.style.display = "none";
+        onOff  = false;
+    }
+</script>
+</html>

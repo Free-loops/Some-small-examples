@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        img {
+            position: absolute;
+            /*left: 0;*/
+            top: 150px;
+        }
+        img:nth-child(2){
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+<img src="./img/1.gif" alt=""/>
+<img src="./img/2.gif" alt=""/>
+
+</body>
+<script>
+    var aImg = document.getElementsByTagName('img');
+    var timer = null;
+    timer = setTimeout(function(){
+        for(var i=0; i<aImg.length;i++){
+            aImg[i].style.display ='none';
+
+        }
+        timer = null;
+    },3000)
+</script>
+</html>

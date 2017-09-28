@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        div {
+            width: 100px;
+            position: absolute;
+            left: 200px;
+            top: 200px;
+            border:2px solid #3c3c3c;
+            cursor: pointer;
+            display: none;
+            padding: 5px;
+        }
+
+        div ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-align: center;
+        }
+        div ul li {
+            height: 30px;
+
+        }
+        div ul li a {
+            display: block;
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <ul>
+        <li><a href="javascript:;">复制</a></li>
+        <li><a href="javascript:;">粘贴</a></li>
+        <li><a href="javascript:;">属性</a></li>
+    </ul>
+</div>
+</body>
+<script>
+    var oMenu = document.getElementsByTagName("div")[0];
+    document.oncontextmenu = function(e) {
+        e = e || event;
+        console.log(e.clientX,e.clientY);
+        oMenu.style.display = "block";
+        oMenu.style.left = e.clientX + "px";
+        oMenu.style.top = e.clientY + "px";
+        return false;
+    }
+    document.onclick = function() {
+        oMenu.style.display = "none";
+    }
+</script>
+</html>

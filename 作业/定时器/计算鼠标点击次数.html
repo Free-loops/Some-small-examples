@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    倒计时<span>5</span>秒
+    <input type="button" value="单机开始"/>
+    共点击了<span>0</span>次
+
+</body>
+<script>
+    var aSpan = document.getElementsByTagName('span');
+    var oInput = document.getElementsByTagName('input')[0];
+
+    var timer = null;
+    var k = 5;
+    timer = setInterval(function(){
+        k--
+        aSpan[0].innerHTML = k;
+        if(k==0){
+            clearInterval(timer);
+            timer = null;
+            oInput.disabled = true;
+        }
+    },1000)
+    var j = 0;
+    oInput.onclick = function(){
+
+        j++
+        aSpan[1].innerHTML=j;
+    }
+</script>
+</html>

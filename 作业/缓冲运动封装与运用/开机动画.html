@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #tib{
+            position: fixed;
+            right:0;
+            bottom:0;
+        }
+        #close{
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            right: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="tib">
+    <span id="close"></span>
+    <div id="top"><img src="images/t.jpg" alt=""/></div>
+    <div id="button"><img src="images/b.jpg" alt=""/></div>
+</div>
+</body>
+<script src="myTools.js"></script>
+<script>
+        var oDiv = $('#tib');
+        var oSpan = $('#close');
+        oSpan.onclick = function () {
+            move(oDiv,'bottom',10,-101,function(){
+                startMove(oDiv,{
+                    right:-322,
+                    opacity:1
+                })
+            })
+        }
+</script>
+</html>

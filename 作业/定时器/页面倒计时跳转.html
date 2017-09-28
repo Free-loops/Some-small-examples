@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1><span>5</span>秒后跳转到<a href = "侧边栏延迟消失.html">侧边栏消失</a></h1>
+</body>
+<script>
+    var oSpan = document.getElementsByTagName('span')[0];
+    var k = 5;
+    var timer = null;
+    timer = setInterval(function(){
+        if(k>0){
+            k--;
+            oSpan.innerHTML = k;
+        }else{
+            clearInterval(timer);
+            timer = null;
+                location.href = "侧边栏延迟消失.html";
+        }
+    },1000)
+</script>
+</html>
