@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>面向对象--拖拽</title>
+</head>
+<style>
+    #box {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        left: 100px;
+        top: 100px;
+        background-color: red;
+    }
+    #box2 {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        left: 300px;
+        top: 100px;
+        background-color: blue;
+    }
+</style>
+<body>
+    <div id="box">
+
+    </div>
+    <div id="box2">
+            
+    </div>
+</body>
+<script>
+(function (window){
+ 
+
+    function Dags(id){
+        this.ele = document.getElementById(id);
+        this.disX=0;
+        this.disY=0;
+        // this.fnDown();
+    }
+    Dags.prototype.fnDown=function(){
+        var that = this
+        this.ele.onmousedown=function(e){
+            e=e||event;
+            that.disX=e.clientX-this.offsetLeft;
+            that.disY=e.clientY-this.offsetTop;
+            document.onmousemove = function(e){
+                that.fnMove(e);
+            }
+            this.onmouseup = that.fnUp;
+        }
+    }
+    Dags.prototype.fnMove=function(e){
+        e=e||event;
+        this.ele.style.left = e.clientX-this.disX+'px';
+        this.ele.style.top = e.clientY-this.disY+'px';
+    }
+    Dags.prototype.fnUp=function(){
+        document.onmousemove = null;
+    }
+    window.Dags=Dags;
+})(window)
+    var drag = new Dags('box')
+    var drag2 = new Dags('box2')
+</script>
+</html>

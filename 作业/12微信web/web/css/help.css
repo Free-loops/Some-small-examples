@@ -1,0 +1,456 @@
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../nts/icomoon.eot?7kkyc2');
+    src:  url('../fonts/icomoon.eot?7kkyc2#iefix') format('embedded-opentype'),
+      url('../fonts/icomoon.ttf?7kkyc2') format('truetype'),
+      url('../fonts/icomoon.woff?7kkyc2') format('woff'),
+      url('../fonts/icomoon.svg?7kkyc2#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: helvetica neue,arial,hiragino sans gb,microsoft yahei,sans-serif;
+}
+body {
+    background-color: #f5f5f5;
+}
+/* 头部开始 */
+.header {
+    height: 75px;
+    position: fixed;
+    width: 100%;
+    background-color: #fff;
+    transition: all 0.4s;
+    z-index: 999;    
+}
+.header-m {
+    height: 75px;
+    width: 1100px;
+    margin: 0 auto;
+    position: relative
+}
+.logo {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -25px;
+    transition: all 0.4s;
+}
+.notice {
+    position: absolute;
+    top: 50%;
+    right: 100px;
+    line-height: 21px;
+    margin-top: -10px;
+    font-size: 14px;
+    transition: all 0.4s;
+    
+}
+i {
+    font-family: "icomoon";
+    color: #00ace9;
+    font-style: normal;
+    font-size: 21px;
+    cursor: default;
+}
+.notice i {
+    font-family: "icomoon";
+    color: #00ace9;
+    font-style: normal;
+    font-size: 21px;
+}
+.notice span {
+    line-height: 21px;
+    display: inline-block;
+    width: 224px;
+    height: 21px;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 350
+}
+.loginBtn {
+    position: absolute;
+    top: 50%;
+    right: -7px;
+    margin-top: -15px;
+    height: 30px;
+    width: 60px;
+    background-color: #00ace9;
+    border-radius: 5px;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.4s;
+    
+}
+.loginBtn:hover {
+    background-color: #04bdff
+}
+/* 登陆框 */
+.qlogin {
+    width: 400px;
+    height: 347px;
+    position: fixed;
+    top: -400px;
+    left: 50%;
+    margin-left: -200px;
+    text-align: center;
+    border: 2px solid #eee;
+    overflow: hidden;
+    background-color: #fff;
+    /* transition: 0.5s; */
+}
+.qlogin .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.qlogin .close a {
+    width: 47px;
+    height: 20px;
+    display: block;
+    background: url(../images/icon_3_tiny.png) no-repeat -221px -126px;
+}
+.qlogin .close a:hover {
+    background:  url(../images/icon_3_tiny.png) no-repeat -221px -151px;
+}
+.qlogin h2 {
+    font-weight: 400;
+    color: #333;
+    font-size: 20px;
+    margin: 20px auto;
+    
+}
+.qlogin p {
+    color: #666;
+}
+.qlogin p a {
+   color: #3481cf;
+}
+.qlogin p a:hover {
+    text-decoration: underline;
+}
+.qlogin img {
+    position: absolute;
+    top: 135px;
+    left: 133px;
+    width: 134px;
+    border: 1px solid #D3D3D3;
+}
+.qlogin ul {
+    position: absolute;
+    right: 0px;
+    bottom: 10px;
+}
+.qlogin ul li {
+    float: left;
+    font-size: 12px;
+    color: #bfbfbf
+}
+.qlogin ul li a {
+    padding: 10px;
+    color: #666;
+}
+/* 头部结束 */
+/* 固定浮层 */
+.float {
+    position: fixed;
+    top: 50%;
+    margin-top: -97px;
+    right: 180px;
+    box-shadow: 0 0 6px #e5e5e5;
+    background-color: #fff;
+    border-radius: 5px;
+    z-index: 999;
+    cursor: pointer;
+}
+.float #right_service li {
+    width: 39px;
+    height: 48px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    cursor: pointer;
+    
+}
+.float ul li:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.float ul li:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.float ul li:hover{
+    background-color: #00ace9;
+}
+.float ul li:hover i {
+    color: #fff;
+}
+.float ul li:hover .txt-box {
+    width: 300px;
+    height: 95px;
+    padding: 26px 23px;
+}
+.float ul li i {
+    display: inline-block;
+    width: 39px;
+    text-align: center;
+    line-height: 48px;
+    cursor: pointer
+}
+.float #right_service li:hover .layer_box {
+    width: 313px;
+    height: 305px;
+}
+#right_service .layer_box {
+    width: 0px;
+    height: 0px;
+}
+.float ul li .txt-box {
+    border: 1px solid #e2e2e2;
+    padding: 0;
+    position: absolute;
+    right: 50px;
+    top: -51px;
+    width: 0px;
+    height: 0px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 6px #e5e5e5;
+    overflow: hidden;
+}
+.txt-box div {
+    float: right;
+}
+.txt-box {
+    font-size: 14px;
+    line-height: 22px;
+    transition: all 0.5s
+}
+.layer_box dl dd {
+    margin:5px 0;
+}
+.txt-box>div>span {
+    margin-top: 10px;
+}
+.txt-box span {
+    color: #a1a1a1;
+}
+.float ul li:hover::before {
+    position: absolute;
+    width: 0;
+    height: 0;
+    content: '';
+    top: inherit;
+    bottom: inherit;
+    left: -10px;
+    margin-left: -1px;
+    font-size: 0;
+    border: 8px dashed transparent;
+    border-left-color: #d7d7d7;
+    border-left-style: solid;
+    top: 20px;
+}
+
+/* 中间部分开始 */
+.min {
+    margin: 0 auto;
+    overflow: hidden;
+}
+.min-m {
+    height: 395px;
+    width: 1100px;
+    margin: 0 auto;
+    padding-top: 91px;
+}
+.min-l {
+    width: 230px;
+    float: left;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+    padding-bottom: 30px;
+}
+
+.logo-l {
+    border-bottom: 1px solid #f5f5f5;
+    overflow: hidden
+}
+.logo-l img {
+    float: left;
+}
+.min-l ul li {
+    border-bottom: 1px solid #f5f5f5;
+    position: relative;
+    line-height: 40px;
+}
+.min-l ul li i {
+    position: absolute;
+    font-weight: 200;
+    color: #909baa;
+    left: 19px;
+    font-size: 12px;
+}
+.min-l ul li a {
+    display: block;
+    height: 40px;
+    color: #000;
+    font-size: 15px;
+    line-height: 40px;
+    text-indent: 48px;
+    position: relative;
+    cursor: default;
+}
+#oList_M {
+    background-color: #fafafa;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.5s;
+}
+#oList_M a{
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+    height: 38px;
+    line-height: 38px;
+}
+
+/* 中间右半部份开始 */
+.min-r {
+    width: 845px;
+    float: right;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+}
+.search {
+    width: 757px;
+    height: 40px;
+    padding: 30px 44px;
+    border-bottom: 1px solid #f5f5f5;
+}
+.search input {
+    height: 38px;
+    width: 601px;
+    border: 1px solid #dedede;
+    border-right: none;
+    outline: none;
+    padding-left: 13px;
+    float: left;
+    font-size: 14px;
+    color: #666;
+    line-height: 38px;
+}
+.search input:hover{
+    border-color: #b2b2b2;
+}
+.search input:focus {
+    border-color: #00ace9;
+}
+.search button {
+    width: 45px;
+    height: 40px;
+    background-color: #00ace9;
+    float: left;
+    border: none;
+    outline: none;
+}
+.search button i {
+    color: #fff; 
+    font-size: 17px;
+}
+.cont_list {
+    width: 755px;
+    padding: 18px 45px;
+}
+.cont_list ul {
+    margin: 20px 0 34px;
+}
+.cont_list ul li {
+    width: 755px;
+    height: 30px;
+    margin-bottom: 5px;
+    line-height: 30px;
+}
+.cont_list ul li a {
+    font-size: 15px;
+    color: #333;
+}
+.cont_list ul li a:hover {
+    color: #00ace9;
+}
+/* 中间部分结束 */
+/* 底部开始 */
+.footer {
+    background-color: #fff;
+    width: 100%;
+    height: 160px;
+    border-top: 1px solid #dedede; 
+    margin-top: 41px;  
+     
+}
+.footer_min {
+    width: 1100px;
+    height: 159px;
+    margin: 0 auto;
+    position: relative;
+}
+.footer-l {
+    width: 617px;
+    height: 80px;
+    padding: 40px 0 40px 10px;
+    line-height: 40px;
+    float: left;
+
+}
+.footer-l a{
+    margin-right: 27px;
+    font-size: 14px;
+    color: #000;
+}
+.footer-l a:hover{
+    color: #00ace9;
+}    
+.footer-l p {
+    font-size: 14px;
+    color: #999;
+}
+.footer-r {
+    width: 288px;
+    height: 117px;
+    margin: 24px 10px 0 0;
+    float: right;
+}
+.footer-r ul li {
+    width: 144px;
+    height: 117px;
+    color: #666;
+    font-size: 14px;
+    float: left;
+    text-align: center;
+}
+/* 返回顶部 */
+#move_up {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: #fff;
+    position: absolute;
+    top: -20px;
+    right: -40px;
+    text-align: center;
+    line-height: 55px;
+    cursor: pointer;
+    box-shadow: 0 0 6px #ccc;
+}
+#move_up i {
+    color: #c3c5c6;
+}
+#move_up:hover i {
+    color: #00ace9;    
+}

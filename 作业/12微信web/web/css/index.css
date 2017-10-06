@@ -1,0 +1,286 @@
+* {
+margin: 0;
+padding: 0;
+}
+body {
+    background: url(../images/bgi.jpg) repeat-x;
+}
+.container {
+    width: 968px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+ul li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+/* 头部开始 */
+.logo {
+    padding-top: 14px;
+    float: left;
+}
+.header {
+    width: 968px;
+    height: 75px;
+}
+.nav {
+    padding-top: 21px;
+    float: right;
+}
+.nav ul li {
+    float: left;
+    margin: 0 2px;
+}
+.nav ul li a {
+    display: inline-block;
+    padding-left: 16px;
+    color: #fff;
+    font-size: 14px;
+}
+.nav ul li:first-child a {
+    background: url(../images/to.png) no-repeat;
+}
+.nav ul li a span{
+    display: block;
+    padding-right: 16px;
+    line-height: 33px;
+}
+.nav ul li:first-child a span {
+    background: url(../images/to.png) no-repeat right;
+}
+.nav ul li a:hover {
+    background: url(../images/ao.png) no-repeat;
+}
+.nav ul li a:hover span {
+    background: url(../images/ao.png) no-repeat right;
+}
+/* 中上部分 */
+.min {
+    padding-top:45px;
+    width: 968px;
+    height: 379px;
+    position: relative;
+}
+.min-l h1 {
+    font-weight: normal;
+    line-height: 39px;
+    font-size: 26px;
+}
+.min-l p {
+    line-height: 33px;
+    color:#979797;
+}
+.min-l>a {
+    width: 224px;
+    height: 64px;
+    background: url(../images/download1.png) no-repeat;
+    display: block;
+    margin-top:15px;
+}
+.min-l>a:hover {
+    background: url(../images/download2.png) no-repeat;
+}
+.min-l ul {
+    margin-top: 10px;
+}
+.min-l ul li a{
+    display: inline-block;
+    padding:5px 2px;
+    font-size: 14px;
+    color:#609700;
+}
+.min-l ul li>a:hover {
+    color: #333;
+    text-decoration: underline;
+}
+.min-l ul li span {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right:5px;
+    border-radius: 5px;
+    background-color: #999;
+}
+.min-r {
+    position: absolute;
+    width: 500px;
+    height: 379px;
+    top: 25px;
+    right: 50px;
+    text-align: center;
+}
+.min-r #min_M li {
+    position: absolute;
+    opacity: 0;
+    transition: all 0.7s;
+}
+#min_M {
+    font-size: 14px;
+}
+#min_M a {
+    color: #609700
+}
+.min-r>a:nth-child(3) {
+    display: inline-block;
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    background: url(../images/tb.png) no-repeat -16px -59px;
+    top:190px;
+    left: 0;
+    display: none;
+}
+.min-r>a:last-child {
+    width: 42px;
+    height: 42px;
+    background: url(../images/tb.png) no-repeat -68px -59px;    
+    position: absolute;
+    top: 190px;
+    right:0;
+    display: none;
+}
+.min-r:hover>a {
+    display: block;
+}
+.min-r>a:nth-child(3):hover {
+    background: url(../images/tb.png) no-repeat -16px -12px;
+}
+.min-r>a:nth-child(4):hover {
+    background: url(../images/tb.png) no-repeat -68px -12px;       
+}
+#min_T {
+    position: absolute;
+    bottom: 0px;
+    width: 100px;
+    height: 30px;
+    left: 200px;
+}
+#min_T li{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    cursor: pointer;
+    background: url(../images/tb.png) no-repeat -36px -110px;
+}
+#min_T .curent_pic {
+    background: url(../images/tb.png) no-repeat -12px -110px;
+}
+/* 中下部分 */
+.min-t {
+    width: 968px;
+    height: 400px;
+    padding-top: 50px;
+    border-bottom: 1px solid #ccc;
+    line-height: 25px;
+}
+.min-t-l li{
+    float: left;
+    font-size: 14px;
+}
+.min-t-l li h3 {
+    font-size: 14px;
+}
+.min-t-l li p {
+    color: #999;
+}
+.min-t-l li a {
+    color: #609700;
+}
+.min-t-l li a:hover {
+    text-decoration: underline;
+    color: #333;
+}
+.min-t-l li a:first-child{
+    display: block;
+    width: 216px;
+    height: 114px;
+    background-color: red;
+}
+.min-t-l li:first-child a:first-child{
+    background: url(../images/banben.png) no-repeat;
+}
+.min-t-l li:nth-child(2) a:first-child{
+    background: url(../images/banben.png) no-repeat -217px 0;
+}
+.min-t-l li:nth-child(3) a:first-child{
+    background: url(../images/banben.png) no-repeat -436px 0;
+}
+.min-t-r {
+    float: right;
+    font-size: 14px;
+    line-height: 1.8;
+}
+.min-t-r ul {
+    padding-left: 12px;
+}
+.min-t-r h2 {
+    font-size: 14px;
+}
+.min-t-r ul li {
+    list-style: disc outside;
+    color: #999;
+    line-height: 1.8;
+    margin: 5px 0;
+}
+.min-t-r ul li a {
+    color: #609700;
+}
+.min-t-r ul li span:first-child {
+    float: right;
+    color: #999;
+}
+.min-t-r ul li span:nth-child(3) {
+    color: red;
+    font-size: 12px;
+}
+.min-t-r ul li a:hover {
+    color: #333;
+    text-decoration: underline;
+}
+.min-t-r>a {
+    display: inline-block;
+    color: #609700;
+    margin: 10px 0 5px;
+}
+.min-t-r>a:hover {
+    color: #333;
+    text-decoration: underline;
+}
+.min-t-r>div {
+    margin-top:10px;
+    height: 40px;
+    padding-left: 40px;
+    padding-top: 2px;
+    background: url(../images/weixintb.png) no-repeat;
+}
+.min-t-r>div a {
+    font-weight: 700;
+    color: #000
+}
+/* 底部 */
+.footer {
+    width: 968px;
+    height: 50px;
+    padding: 10px 0;
+    font-size: 12px;
+    color: #888;
+}
+.footer a {
+    font-size: 12px;
+    color: #888;
+    padding: 0 5px;
+}
+.footer p {
+    margin-top: 5px;
+}
+.footer a:hover {
+    text-decoration: underline;
+}
+.footer-l {
+    float: left;
+}
+.footer-r {
+    float: right;
+}

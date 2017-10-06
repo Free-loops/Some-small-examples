@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tab选项卡</title>
+    <style>
+        #box div {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            display: none;
+            border: 1px solid red;
+        }
+        .active {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <button class="active">按钮1</button>
+        <button>按钮2</button>
+        <button>按钮3</button>
+        <div style="display:block">图1</div>
+        <div>图2</div>
+        <div>图3</div>
+    </div>
+</body>
+<script>
+    (function(window){
+    function Tab(id){
+        this.parent = document.getElementById(id);
+        this.aBtn = this.parent.getElementsByTagName('button');
+        this.aDiv = this.parent.getElementsByTagName('div');
+        this.init();
+    }
+    Tab.prototype.init=function(){
+        var that=this;
+        for(var i=0;i<this.aBtn.length;i++){
+            this.aBtn[i].index = i
+            this.aBtn[i].onclick = function(){
+                that.fnTab(this.index);
+            }
+        }
+    }
+    Tab.prototype.fnTab=function(idx){
+        for(var i=0;i<this.aBtn.length;i++){
+            this.aBtn[i].className = '';
+            this.aDiv[i].style.display = 'none';
+        }
+        this.aBtn[idx].className = 'active';
+        this.aDiv[idx].style.display = 'block';
+    }
+    window.Tab = Tab;
+})(window)
+    var tab1=new Tab('box');
+    console.log(tab1)
+</script>
+</html>
