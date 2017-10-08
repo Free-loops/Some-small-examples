@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>贪吃蛇</title>
+    <style>
+        #map {
+            width: 1200px;
+            height: 600px;
+            margin: 0 auto;
+            position: relative;
+            background-color: #ccc;
+            font-size: 100px;
+            text-align: center;
+            line-height: 600px;
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+    <div id="map">
+        五彩斑斓贪吃蛇
+    </div>
+</body>
+<script src="food.js"></script>
+<script src="snake.js"></script>
+
+<script>
+    //实例化一个食物对象
+    var food = new Food();
+    //渲染食物
+    food.randem(map);
+    //实例化一个蛇对像
+    var snake = new Snake();
+    //渲染蛇
+    snake.randem(map);
+    var timer = null;
+    var onOff = false;
+    document.addEventListener('keydown',
+    function(e){
+        e=e||event;
+        console.log(e.keyCode)
+        if(e.keyCode==32){
+            onOff = true;
+                                 
+        }
+        if(onOff){
+            clearInterval(timer);
+            timer=null;
+            snake.move(food,map)
+            //获取蛇头坐标
+            var headX = snake.body[0].x*snake.width;
+            var headY = snake.body[0].y*snake.height;
+            //判断蛇头坐标是否超出地图范围 如果超出 则清除定时器 游戏结束
+            if(headX<0||headX>=map.offsetWidth){
+                clearInterval(timer);
+                timer=null;
+                alert('Game over');
+                return
+            }
+            if(headY<0||headY>=map.offsetHeight){
+                clearInterval(timer);
+                timer=null;
+                alert('Game over');
+                return
+            }
+            //遍历蛇的每一节 如果碰到自己的身体 游戏结束
+            for(var i=4;i<snake.body.length;i++){
+                if(snake.body[0].x==snake.body[i].x&&snake.body[0].y==snake.body[i].y){
+                console.log(snake.body);
+                clearInterval(timer);
+                timer=null;
+                alert('Game over');
+                return
+                }
+            }
+            snake.randem(map);   
+        }
+        document.addEventListener('keyup',
+            function(e){
+            e=e||event;
+            if(e.keyCode==32){
+  
+                clearInterval(timer);
+                timer=null;
+                outoPlay(200)
+                onOff = false;
+            }
+        });
+    });
+    
+    
+    //让蛇的坐标自动变化 并且渲染蛇 
+    outoPlay(200)
+    function outoPlay(spead){
+        
+        timer = setInterval(function(){
+            snake.move(food,map)
+            //获取蛇头坐标
+            var headX = snake.body[0].x*snake.width;
+            var headY = snake.body[0].y*snake.height;
+            //判断蛇头坐标是否超出地图范围 如果超出 则清除定时器 游戏结束
+            if(headX<0||headX>=map.offsetWidth){
+                clearInterval(timer);
+                timer=null;
+                alert('Game over');
+                return
+            }
+            if(headY<0||headY>=map.offsetHeight){
+                clearInterval(timer);
+                timer=null;
+                alert('Game over');
+                return
+            }
+            //遍历蛇的每一节 如果碰到自己的身体 游戏结束
+            for(var i=4;i<snake.body.length;i++){
+                if(snake.body[0].x==snake.body[i].x&&snake.body[0].y==snake.body[i].y){
+                console.log(snake.body);
+                clearInterval(timer);
+                timer=null;
+                alert('Game over');
+                return
+                }
+            }
+            snake.randem(map);
+            
+        },spead)
+    }
+    //键盘控制蛇的方向
+    keyDown()
+    function keyDown(){
+        document.addEventListener('keydown',function(e){
+            e = e||event;
+            //判断上次蛇的方向 如果为左或者右 则再次按下键盘时只识别上和下反之亦然
+            if(snake.direction=='right'||snake.direction=='left'){
+                switch(e.keyCode){
+                    case 38:
+                    snake.direction = 'up';
+                    break;
+                    case 40:
+                    snake.direction = 'down';
+                    break;
+                }
+            }else{
+                switch(e.keyCode){
+                    case 37:
+                    snake.direction = 'left';
+                    break;
+                    case 39:
+                    snake.direction = 'right';
+                    break;
+                }
+            }
+        })
+    }
+</script>
+</html>
