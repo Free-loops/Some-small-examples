@@ -1,0 +1,344 @@
+/* 公共部分 */
+.go {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    top: 30px;
+    right: 50px;
+    z-index: 1001;
+}
+.more {
+    position: fixed;
+    bottom: 30px;
+    right: 60px;
+    z-index: 1001;
+    animation: more 0.3s linear infinite alternate;/*无穷次 逆播放 */
+}
+@keyframes more {
+    from{
+        transform: translateY(-10px);
+    }
+    to{
+        transform: translateY(10px);
+    }
+}
+
+/* 第一屏 */
+.section-1 {
+    background: url("../images/01-bg.png") no-repeat center bottom;
+}
+.content {
+    width: 900px;
+    height: 600px;
+    background: rgba(0, 0, 0, .1);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -450px;
+}
+.section-1 .goods {
+    position: absolute;
+    top: 230px;
+    left: 40px;
+}
+.section-1 .fly {
+    position: absolute;
+    top: 40px;
+    right: -20px;
+    animation: fly 0.8s linear infinite alternate;
+}
+.section-1 .sofa {
+    position: absolute;
+    top: 180px;
+    left: 220px;
+    animation: sofa01 1s linear infinite alternate;/*无穷次 逆播放 */
+}
+@keyframes fly {
+    from{
+        transform: translateY(-30px);
+    }
+    to{
+        transform: translateY(30px);
+    }
+}
+@keyframes sofa01 {
+    from{
+        transform: translateY(-10px);
+    }
+    to{
+        transform: translateY(10px);
+    }
+}
+/* 第二屏 */
+.section-2 {
+    background: url(../images/02-bg.png) no-repeat center bottom;
+}
+.section-2 .goods {
+    position: absolute;
+    top: 170px;
+    left: 225px;
+    transform: scale(0);
+    transform-origin: right bottom;
+    transition:all 1s linear 2s;
+    
+}
+.section-2 .sofa {
+    position: absolute;
+    top: 133px;
+    left: 287px;
+    transform: scale(0.5);
+    opacity: 0;
+    transition:all 2s linear 3s;   
+    z-index: 1002; 
+}
+.section-2 .input {
+    position: absolute;
+    right: 171px;
+    top: 120px;
+    /* 转换转换圆心 */
+    transform-origin: right top;
+    opacity: 0;
+}
+.section-2 .key {
+    position: absolute;
+    left: 100px;
+    top: 4px;
+    opacity: 0;
+    transition:all 1s linear 1s;
+}
+.section-2 .text {
+    text-align: center;
+}
+.section-2 .text01 {
+    opacity: 0;
+    position: absolute;
+    transition: opacity 1s linear 1s;
+}
+.section-2 .text01 {
+    transition: opacity 1s linear;
+}
+/* 第二屏动画 */
+.section-2.load .text01 {
+    position: static;
+    opacity: 1;
+}
+.section-2.load .text02 {
+    opacity: 0;
+    position: absolute;
+}
+.section-2.load .sofa {
+    opacity: 1;
+}
+.section-2.load .key {
+    opacity: 1;
+}
+.section-2.load .goods {
+    transform: none;
+}
+.section-2.load .input {
+    animation: input 3s linear forwards;
+}
+/*右上角 transform: scale(0.7);*/
+/*中心位置 transform: translate(-180px,130px);*/
+/*最右边的位子  transform: translate(2000px,130px);*/
+@keyframes input {
+    0%{
+        opacity: 1;
+        transform: translate(2000px,130px);
+    }
+    33.3%{
+        transform: translate(-180px,130px);
+    }
+    67%{
+        transform: translate(-180px,130px);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(0.7);
+    }
+}
+.section-2.leaved .sofa{
+    animation: sofa02 0.7s linear;
+}
+@keyframes sofa02 {
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 1;
+        /*沙发下移*/
+        transform: translate(-80px,710px);
+    }
+}
+/* 第三屏 */
+.section-3{
+    background: url("../images/03-bg.png") no-repeat center bottom;
+}
+.section-3 .sofa{
+    position: absolute;
+    left: 212px;
+    top: 180px;
+    display: none;
+}
+.section-3 .change {
+    position: absolute;
+    right: 115px;
+    bottom: 170px;
+}
+.section-3 .change img:first-child {
+    /* position: absolute; */
+    opacity: 1;
+    transition: opacity 1s linear;       
+}
+.section-3 .change img:last-child {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s linear 1s;    
+}
+.section-3 .cart {
+    position: absolute;
+    right: 185px;
+    bottom: 105px;
+}
+.section-3 .cart img:first-child {
+    opacity: 1;
+    transition: opacity 1s linear;       
+    
+}
+.section-3 .cart img:last-child {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s linear 1s;
+}
+/* 第三屏动画 */
+.section-3.load .sofa{
+    position: absolute;
+    left: 212px;
+    top: 180px;
+    display: block;
+    z-index: 1001;
+}
+.section-3.load .change img:first-child {
+    position: absolute;
+    opacity: 0;
+}
+.section-3.load .change img:last-child {
+    position: static;
+    opacity: 1;
+}
+.section-3.load .cart img:first-child {
+    position: absolute;
+    opacity: 0;
+}
+.section-3.load .cart img:last-child {
+    position: static;
+    opacity: 1;
+}
+.section-3.leaved .sofa {
+    animation: sofa03 0.7s linear
+}
+@keyframes sofa03 {
+    from{}
+    100%{
+        transform: translate(190px,666px) rotate(45deg);
+    }
+}
+/* 第四屏 */
+.section-4{
+    background: url("../images/04-bg.png") no-repeat center bottom;
+}
+.section-4 .cloud{
+    position: absolute;
+    left: -400px;
+    top: -10px;
+    animation: cloud04 20s linear infinite alternate;
+}
+@keyframes cloud04 {
+    from{}
+    to{
+        transform: translateX(1000px)
+    }
+}
+.section-4 .text {
+    text-align: center;
+    margin-top: 120px;
+}
+.section-4 .text img:first-child {
+    /* position: absolute; */
+    opacity: 1;
+    transition: all 1s linear;    
+}
+.section-4 .text img:last-child{
+    position: absolute;
+    opacity: 0;
+    transition: all 1s linear 1s;
+}
+.section-4 .cart {
+    text-align: center;
+    margin-top: 50px;
+    position: relative;
+    z-index: 1002;
+}
+.section-4 .cart img:first-child {
+    position: absolute;
+    top: 8px;
+    left: 240px;
+    z-index: 1002;
+}
+.section-4 .cart img:last-child {
+    position: absolute;
+    top: 8px;
+    left: 400px;
+    transform: rotate(45deg);
+    opacity: 0;
+}
+.section-4 .address {
+    position: absolute;
+    left: 310px;
+    opacity: 0;
+    transition: all 1s linear;
+}
+.section-4 .address img:last-child {
+    position: absolute;
+    top: 60px;
+    left: 45px;
+    opacity: 0;
+    transition: all 1s linear 1s;
+}
+/* 第四屏动画 */
+.section-4.load .address {
+    position: absolute;
+    left: 310px;
+    opacity: 1;
+}
+.section-4.load .address img:last-child {
+    position: absolute;
+    top: 60px;
+    left: 45px;
+    opacity: 1;
+}
+.section-4.load .text img:first-child {
+    position: absolute;
+    opacity: 0;
+}
+.section-4.load .text img:last-child{
+    position: static;
+    opacity: 1;
+    /* transition: all 1s linear; */
+}
+.section-4.load .cart img:last-child {
+    animation: sofa04 1s linear forwards;
+}
+.section-4.load .cart {
+    transform: translateX(1000px);
+    transition: all 2s linear;
+}
+@keyframes sofa04 {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        transform: rotate(20deg);
+        opacity: 1;
+    }
+}
