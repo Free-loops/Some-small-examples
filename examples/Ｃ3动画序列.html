@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        background-color: red;
+        width: 100px;
+        height: 100px;
+    }
+    .box1 {
+        animation: box1 1s infinite;
+    }
+    .box2 {
+        position: relative;
+        top: -100px;
+        left: 500px;
+        animation: box2 1s infinite 0.8s;
+    }
+    .box3 {
+        position: relative;
+        top: 300px;
+        left: 500px;
+        animation: box3 1s infinite 0.6s;
+    }
+    .box4 {
+        position: relative;
+        top: 200px;
+        animation: box4 1s infinite 0.25s;
+    }
+    @keyframes box1{
+        0%{
+            transform: translateX(0px)
+        }
+        100%{
+            transform: translateX(500px)
+        }
+    }
+    @keyframes box2{
+        0%{
+            transform: translateY(0px)
+        }
+        100%{
+            transform: translateY(500px)
+        }
+    }
+    @keyframes box3{
+        0%{
+            transform: translateX(0px)
+        }
+        100%{
+            transform: translateX(-500px)
+        }
+    }
+    @keyframes box4{
+        0%{
+            transform: translateY(0px)
+        }
+        100%{
+            transform: translateY(-500px)
+        }
+    }
+    .box5 {
+        position: absolute;
+        top:250px;
+        left: 250px;
+        animation:box5 0.5s linear infinite;
+    }
+    @keyframes box5{
+        0%{
+            /* transform: scale(0,0); */
+            transform:rotateX(0) scale(0,0);
+        }
+        50%{
+            transform:rotateZ(90deg) scale(2);
+        }
+        100%{
+            transform:rotateZ(180deg) scale(0);           
+        }
+    }
+</style>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <div class="box4"></div>
+    <div class="box5"></div>
+</body>
+</html>
