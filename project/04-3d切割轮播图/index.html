@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+        .box {
+            width: 560px;
+            height: 300px;
+            margin: 150px auto;
+            position: relative;
+        }
+        ul {
+            height: 300px;
+            transform-style: preserve-3d;            
+        }
+        .box ul li {
+            width: 112px;
+            height: 100%;
+            float: left;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: 1s;
+        }
+        .box ul li span {
+            width: 112px;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        /* 五个Li的背景位置不同 正好平分一张图片*/
+        .box .imageBox li:nth-child(1) span{
+            background-position: 0 0;
+        }
+        .box .imageBox li:nth-child(2) span{
+            background-position: -112px 0;
+        }
+        .box .imageBox li:nth-child(3) span{
+            background-position: -224px 0;
+        }
+        .box .imageBox li:nth-child(4) span{
+            background-position: -336px 0;
+        }
+        .box .imageBox li:nth-child(5) span{
+            background-position: -448px 0;
+        }
+        /* li里面的每一个span为不同的背景图片 */
+        .box .imageBox li span:nth-child(1){
+            background-image: url(images/1.jpg);
+            transform: translateZ(150px)
+        }
+        .box .imageBox li span:nth-child(2){
+            background-image: url(images/2.jpg);
+            transform: rotateX(90deg) translateZ(150px);      
+        }
+        .box .imageBox li span:nth-child(3){
+            background-image: url(images/3.jpg);
+            transform: rotateX(180deg) translateZ(150px);                  
+        }
+        .box .imageBox li span:nth-child(4){
+            background-image: url(images/4.jpg);
+            transform: rotateX(270deg) translateZ(150px);            
+        }
+        /* 左右按钮 */
+        .box a {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background: rgba(0,0,0,.2);
+            line-height: 70px;
+            font-size: 20px;
+            color: #fff;
+            top: 115px;
+        }
+        .right {
+            right: 0
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul class="imageBox">
+        <li>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </li>
+        <li>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </li>
+        <li>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </li>
+        <li>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </li>
+        <li>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </li>
+    </ul>
+    <a class="left" href="javascript:;">&lt;</a>
+    <a class="right" href="javascript:;">&gt;</a>
+</div>
+<script src="jquery.min.js"></script>
+<script>
+    $(function(){
+        var i=0;//定义点击次数
+        var onOff = true;//定义开关
+        $('.left').on('click',function(){//注册点击事件
+            if(onOff){
+                onOff = false;
+                i++;
+                var deg = i*90;
+                $('li').css({'transform':"rotateX("+deg+"deg)"}).each(function(index,ele){
+                    $(this).css({'transition-delay':index*0.25+'s'})
+                })
+            }
+        })
+        $('.right').on('click',function(){//注册点击事件
+            if(onOff){
+                onOff = false;                
+                i--;
+                var deg = i*90;
+                $('li').css({'transform':"rotateX("+deg+"deg)"}).each(function(index,ele){
+                    $(this).css({'transition-delay':index*0.25+'s'})
+                })
+            }
+        })
+        $('li:last').on('transitionend',function(){//给最后一个li注册动画结束事件
+            onOff = true;
+        })
+    })
+</script>
+</body>
+</html>
