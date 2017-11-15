@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc;
+            
+        }
+    </style>
+</head>
+<body>
+    <canvas width="500px" height="400px" id="canvas"></canvas>
+</body>
+    <script>
+        (function(window){
+            //构造函数
+            var LineChart = function (data,num,ctx) {
+                //对网页中第几个画布进行操作
+                this.num = num || 1;
+                //工具箱
+                this.ctx = ctx || document.querySelector('canvas:nth-child('+this.num+')').getContext('2d');
+                //画布大小
+                this.canvasHeight = this.ctx.canvas.height;
+                this.canvasWidth = this.ctx.canvas.width;
+                //网格大小
+                this.gridSize = 10;
+                //坐标系距离画布边距
+                this.space = 10;
+                //箭头大小
+                this.arrowSize = 10;
+                //节点大小
+                this.dottedSize = 6;
+                //折线图坐标轴原点
+                this.x0 = this.space;
+                this.y0 = this.canvasHeight - this.space;
+                //初始化折线图
+                this.init();
+            }
+            //初始化网格
+            LineChart.prototype.init = function(){
+                this.drawGrid();
+                this.drawAxis();
+                this.drawDotted();
+            }
+            //绘制网格
+            LineChart.prototype.drawGrid = function () {
+                //x轴方向最大线条数量
+                this.ctx.beginPath();
+                var xLineTotal = Math.floor(this.canvasHeight/this.gridSize);
+                for (var i = 0; i < xLineTotal; i++) {
+                    this.ctx.moveTo(0,i*this.gridSize-0.5);
+                    this.ctx.lineTo(this.canvasWidth,i*this.gridSize-0.5)
+                }
+                //y轴方向最大线条数
+                var yLineTotal = Math.floor(this.canvasWidth/this.gridSize);
+                for (var i = 0; i < yLineTotal; i++) {
+                    this.ctx.moveTo(i*this.gridSize-0.5,0);
+                    this.ctx.lineTo(i*this.gridSize-0.5,this.canvasHeight);
+                }
+                this.ctx.strokeStyle = '#ccc';                
+                this.ctx.stroke();
+            }
+            //绘制坐标系
+            LineChart.prototype.drawAxis = function () {
+                //开启新的路径
+                this.ctx.beginPath();
+                //Y轴
+                this.ctx.moveTo(this.space,this.canvasHeight-this.space);
+                this.ctx.lineTo(this.space,this.space);
+                this.ctx.lineTo(this.space+this.arrowSize/2,this.space+this.arrowSize);
+                this.ctx.lineTo(this.space-this.arrowSize/2,this.space+this.arrowSize);
+                this.ctx.lineTo(this.space,this.space);
+                //X轴
+                this.ctx.moveTo(this.space,this.canvasHeight-this.space);
+                this.ctx.lineTo(this.canvasWidth-this.space,this.canvasHeight-this.space);
+                this.ctx.lineTo(this.canvasWidth-this.space-this.arrowSize,this.canvasHeight-this.space+this.arrowSize/2);
+                this.ctx.lineTo(this.canvasWidth-this.space-this.arrowSize,this.canvasHeight-this.space-this.arrowSize/2);
+                this.ctx.lineTo(this.canvasWidth-this.space,this.canvasHeight-this.space);  
+                //线条和填充样式
+                this.ctx.strokeStyle = '#000'; 
+                this.ctx.fillStyle = '#000'; 
+                //填充                           
+                this.ctx.fill();
+                //描边
+                this.ctx.stroke();                      
+            }
+            //根据数据绘制节点和折线
+            LineChart.prototype.drawDotted = function () {
+                this.ctx.beginPath();
+                //初始化折线第一个点
+                var prevCanvasX = this.x0;
+                var prevCanvasY = this.y0;
+                for(var i=0;i<data.length;i++){
+                    //将数据坐标转换为canvas坐标
+                    var canvasX = this.x0+data[i].x;
+                    var canvasY = this.y0-data[i].y;
+                    //绘制点
+                    this.ctx.moveTo(canvasX-this.dottedSize/2,canvasY-this.dottedSize/2);
+                    this.ctx.lineTo(canvasX+this.dottedSize/2,canvasY-this.dottedSize/2);
+                    this.ctx.lineTo(canvasX+this.dottedSize/2,canvasY+this.dottedSize/2);
+                    this.ctx.lineTo(canvasX-this.dottedSize/2,canvasY+this.dottedSize/2);
+                    this.ctx.closePath();
+                    //绘制折线
+                    this.ctx.moveTo(prevCanvasX,prevCanvasY);
+                    this.ctx.lineTo(canvasX,canvasY);
+                    //记录上一次点的坐标
+                    prevCanvasX = canvasX;
+                    prevCanvasY = canvasY;
+                }
+                this.ctx.strokeStyle = 'red';
+                this.ctx.fillStyle = 'red';
+                this.ctx.stroke();
+                this.ctx.fill();
+            }
+            window.LineChart = LineChart;
+        })(window);
+        //模拟数据
+        var data  = [{x:100,y:getRandom(10,380)},{x:200,y:getRandom(10,380)},{x:260,y:getRandom(10,380)},{x:280,y:getRandom(10,380)},{x:300,y:getRandom(10,380)},{x:360,y:getRandom(10,380)},{x:380,y:getRandom(10,380)}];
+        //实例化一个折线图
+        var lineChart = new LineChart(data);
+        //a到b之间的随机整数
+        function getRandom(a,b){
+            return Math.floor(Math.random()*(b-a))+a
+        }
+    </script>
+</html>
