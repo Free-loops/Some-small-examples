@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>snake</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            border:1px solid #000;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <button class="start">开始</button>    
+        <button class="stop">暂停</button>        
+        <button class="reviveBtn">复活</button>
+        <button class="restart">再来一局</button>
+    </div>
+    <canvas width = '800px' height="600px"></canvas>
+</body>
+<script src="Game.js"></script>
+<script src="snake.js"></script>
+<script src="food.js"></script>
+<script>
+var game = new Game();
+</script>
+</html>
