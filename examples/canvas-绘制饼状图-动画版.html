@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc;
+            display: block;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+<canvas width="600" height="400"></canvas>
+<script>
+    var PieChart = function (ctx) {
+        this.ctx = ctx || document.querySelector('canvas').getContext('2d');
+        this.w = this.ctx.canvas.width;
+        this.h = this.ctx.canvas.height;
+        this.x0 = this.w/2+60;
+        this.y0 = this.h/2;
+        this.radius = 150;
+        this.outLine = 20;
+        this.space = 20;
+        this.rectW = 30;
+        this.rectH = 16;
+        this.title = 'Web前端程序员年龄分布图';
+    }
+    //初始化方法
+    PieChart.prototype.init = function (data) {
+        this.data = data;
+        this.drawPie(this.data);       
+    };
+    //绘制整个饼状图
+    PieChart.prototype.drawPie = function (data) {
+        var that = this;
+        var angleList = this.transformAngle(data); 
+        var index = 0;
+        var transAngle = 0;         
+        angleList[0].starAngle = 0;
+        angleList.forEach(function(item,i){   
+            item.endAngle =  item.starAngle + item.angle;
+            that.ctx.beginPath();
+            item.color = that.getRandomColor();
+            that.ctx.fillStyle = item.color;            
+            that.drawProp( item.starAngle,item.angle,item.color,item.prop);
+            that.drawDesc(item.title,i);
+            if(i>angleList.length-2){return;};
+            angleList[i+1].starAngle = item.endAngle;          
+        })
+        this.timer = setInterval(function(){              
+            transAngle+=Math.PI/90;
+            that.ctx.beginPath();
+            that.ctx.moveTo(that.x0, that.y0);  
+            that.ctx.arc(that.x0,that.y0,that.radius,angleList[index].starAngle,transAngle);
+            that.ctx.closePath();
+            that.ctx.fillStyle = angleList[index].color;
+            that.ctx.fill();
+            if(transAngle>=angleList[index].endAngle){
+                index++
+            }
+            if(index>angleList.length-1){
+                clearInterval(that.timer);
+                that.timer=null;
+            }
+        },10)
+        this.drawTitle();
+    };
+    //标题
+    PieChart.prototype.drawTitle = function () {
+        var titleX = this.w/2;
+        var titleY = this.h-10;
+        this.ctx.beginPath();
+        this.ctx.textAlign = 'center';
+        this.ctx.textBaseline = 'bottom'
+        this.ctx.fillStyle = '#000';
+        this.ctx.font = '16px Microsoft YaHei';        
+        this.ctx.fillText(this.title,titleX,titleY)
+    }
+    //百分比
+    PieChart.prototype.drawProp = function (starAngle,angle,color,prop) {
+        var edge = this.radius + this.outLine;
+        var outLineX = this.x0 + Math.cos(starAngle+angle/2) * edge;
+        var outLineY = this.y0 + Math.sin(starAngle+angle/2) * edge;
+        this.ctx.beginPath();
+        this.ctx.moveTo(this.x0, this.y0);
+        this.ctx.lineTo(outLineX,outLineY);
+        this.ctx.font = '14px Microsoft YaHei';
+        var propWidth = this.ctx.measureText(prop).width;
+        if (outLineX > this.x0) {
+            this.ctx.lineTo(outLineX+propWidth,outLineY);
+            this.ctx.textAlign = 'left';
+        } else {
+            this.ctx.lineTo(outLineX-propWidth,outLineY);
+            this.ctx.textAlign = 'right';            
+        }
+        this.ctx.textBaseline = 'bottom';
+        this.ctx.fillText(prop,outLineX,outLineY);
+        this.ctx.strokeStyle = color;
+        this.ctx.stroke();
+    };
+    //左上角说明信息
+    PieChart.prototype.drawDesc = function (title,index) {
+        this.ctx.fillRect(this.space,this.space+(this.rectH+this.space)*index,this.rectW,this.rectH);
+        this.ctx.beginPath();
+        this.ctx.textAlign = 'left';
+        this.ctx.textBaseline = 'top';
+        this.ctx.font = '12px Microsoft YaHei';
+        this.ctx.fillText(title,this.space+this.rectW+10 ,this.space+(this.rectH+this.space)*index)
+    };
+    //将量转化为弧度
+    PieChart.prototype.transformAngle = function (data) {
+        //计算总量
+        var total = 0;
+        data.forEach(function(item,i){
+            total += item.num;
+        })
+        //计算每一分数据的弧度和比例
+        data.forEach(function(item,i){
+            item.angle = item.num/total * Math.PI*2;
+            item.prop = (item.num/total * 100).toFixed(2)+'%';
+        })
+        return data;
+    };
+    //获取随机颜色
+    PieChart.prototype.getRandomColor = function () {
+        var r = Math.floor(Math.random() * 256);
+        var g = Math.floor(Math.random() * 256);
+        var b = Math.floor(Math.random() * 256);
+        return 'rgb(' + r + ',' + g + ',' + b + ')';
+    };
+    //模拟数据
+    var data = [
+        {
+            title: '15-20岁',
+            num: 6
+        },
+        {
+            title: '20-25岁',
+            num: 30
+        },
+        {
+            title: '25-30岁',
+            num: 10
+        },
+        {
+            title: '30以上',
+            num: 8
+        }
+    ];
+    //实例化饼状图
+    var pieChart = new PieChart();
+    //初始化
+    pieChart.init(data);
+</script>
+</body>
+</html>
