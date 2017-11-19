@@ -1,0 +1,139 @@
+
+.lt_layout {
+    width: 100%;
+    min-width: 320px;
+    max-width: 640px;
+    margin: 0 auto;
+}
+.lt_header {
+    width: 100%;
+    height: 60px;
+    min-width: 320px;
+    max-width: 640px;
+    margin: 0 auto;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    background-color: #006699;
+}
+.lt_header .tit {
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: normal;
+    color: #fff;
+}
+.lt_header .search {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    margin-top: -15px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+.lt_banner {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.lt_banner .banner{
+    width: 800%;
+    transform: translateX(-12.5%);
+}
+.lt_banner .banner li {
+    width: 12.5%;
+    float: left;
+}
+.lt_banner .banner li a {
+    width: 100%;
+    display: block;
+}
+.lt_banner .banner li a img {
+    width: 100%;
+    display: block;
+}
+.lt_banner .btn {
+    width: 180px;
+    height: 30px;
+    position: absolute;
+    left: 50%;
+    margin-left: -90px;
+    bottom: 20px;
+}
+.lt_banner .btn li {
+    width: 14px;
+    height: 14px;
+    margin: 8px;
+    border-radius: 50%;
+    background-color: #ccc;
+    float: left;
+}
+.lt_banner .btn li.active {
+    background-color: #fff;
+}
+.lt_nav {
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+}
+.lt_nav ul{
+    width: 100%;
+}
+.lt_nav ul li{
+    width: 33.3333%;
+    float: left;
+}
+.lt_nav ul li a{
+    width: 100%;
+    display: block;
+}
+.lt_nav ul li a img{
+    width: 100%;    
+    display: block;    
+}
+
+/* ===========菜单栏================= */
+.menubar {
+    width: 100%;
+    height: 60px;
+    background-color: #006699;
+    max-width: 640px;
+    min-width: 320px;
+    position: fixed;
+    margin: 0 auto;
+    bottom: 0;
+}
+.menubar ul {
+    width: 100%;
+    height: 60px;
+}
+.menubar ul li {
+    width: 25%;
+    height: 60px;
+    float: left;
+}
+.menubar ul li a {
+    width: 100%;
+    height: 40px;
+    display: block;
+    text-align: center;
+    color: #fff;
+    line-height: 90px;
+    position: relative;
+}
+.menubar ul li a::before{
+    content: "";
+    width: 30px;
+    height: 25px;
+    position: absolute;
+    /* background-color: #fff; */
+    top: 10px;
+    left: 50%;
+    margin-left: -15px;
+    background: url(../images/user.jpg) no-repeat 0 0/ 30px 30px;
+}
+
