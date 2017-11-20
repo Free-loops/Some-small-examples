@@ -11,7 +11,7 @@
     max-width: 640px;
     min-width: 320px;
     margin: 0 auto;
-    background-color: #d8505c;
+    background: rgba(201,21,35,0);
     z-index: 999;
 }
 .jd_search .icon_logo {
@@ -90,6 +90,9 @@
 }
 .jd_banner ul:last-child li:first-child {
     margin-left: 0;
+}
+.jd_banner ul:last-child li.now {
+    background-color: #fff;
 }
 .jd_nav {
     width: 100%;
