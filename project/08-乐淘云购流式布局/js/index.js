@@ -6,6 +6,8 @@ var width = lt_banner.offsetWidth;
 
 var index = 0;
 var timer = setInterval(function(){
+    console.log(index)
+    
     index ++;
     addTransition();
     addTransform(-width*index);
@@ -25,12 +27,12 @@ var addTransform = function (x) {
 }
 
 banner.addEventListener('transitionend',function(){
-    if(index == 7) {
+    if(index >= 7) {
         index = 1;
         removeTransition();
         addTransform(-width*index);
     }
-    if(index == 0) {
+    if(index <= 0) {
         index = 6;
         removeTransition();
         addTransform(-width*index);
@@ -40,4 +42,41 @@ banner.addEventListener('transitionend',function(){
     }
     btns[index-1].classList.add('active');
 })
+var startX = 0;
+var dis = 0;
+var isMove = false;
+lt_banner.addEventListener('touchstart',function(e){
+    clearInterval(timer)
+    startX = e.touches[0].clientX;
+})
 
+lt_banner.addEventListener('touchmove',function(e){
+    e.preventDefault();
+    isMove = true;
+    var moveX = e.touches[0].clientX;
+    dis = moveX - startX;
+    removeTransition();
+    addTransform(-width*index+dis);
+})
+lt_banner.addEventListener('touchend',function(e){
+    if (isMove) {
+        if (Math.abs(dis)>width/3){
+            if (dis>0) {
+                index--;
+            } else {
+                index++;
+            }
+        }
+        addTransition();       
+        addTransform(-width*index);
+    }
+    startX = 0;
+    dis = 0;
+    isMove = false;
+    clearInterval(timer);
+    timer = setInterval(function(){
+        index ++;
+        addTransition();
+        addTransform(-width*index);
+    },2000)
+})
