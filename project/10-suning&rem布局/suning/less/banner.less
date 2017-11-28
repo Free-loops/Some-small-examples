@@ -1,0 +1,42 @@
+@charset "utf-8";
+.sn_banner{
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  ul{
+    transform: translateX(-100%/@bannerNum);
+    -webkit-transform: translateX(-100%/@bannerNum);
+    &:first-child{
+      width: 100%*@bannerNum;
+      li{
+        width: 100%/@bannerNum;
+        float: left;
+        a{
+          display: block;
+          width: 100%;
+          img{
+            display: block;
+            width: 100%;
+          }
+        }
+      }
+    }
+    &:last-child{
+      position: absolute;
+      right:20rem/@baseFontSize;
+      bottom:20rem/@baseFontSize;
+      width: 24rem*@bannerNum/@baseFontSize;
+      li{
+        float: left;
+        margin-left: 12rem/@baseFontSize;
+        width: 12rem/@baseFontSize;
+        height: 12rem/@baseFontSize;
+        border-radius: 50%;
+        background: #fff;
+        &.now{
+          background: @snColor;
+        }
+      }
+    }
+  }
+}

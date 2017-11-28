@@ -1,0 +1,19 @@
+@charset "utf-8";
+/*定义项目所有的混入函数*/
+//适配函数
+//1.需要使用数组的数据
+//2.生成若干个媒体查询
+//3.遍历数组生成不同的适配媒体查询
+//4.less没有遍历语法
+//5.迭代,递归  ==>  函数自调用
+//6.确定自调用的条件  when()
+//7.动态生成html代码
+//8.获取数组数据的是应该使用序号
+.adapterFuc(@index) when ( @index <= @len){
+  @media (min-width: extract(@adapterDeviceList,@index)){
+    html{
+      font-size: extract(@adapterDeviceList,@index)/@psdSize*@baseFontSize;
+    }
+  }
+  .adapterFuc( @index + 1 );
+}
